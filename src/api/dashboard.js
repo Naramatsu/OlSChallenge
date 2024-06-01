@@ -18,10 +18,16 @@ export const getCommitsReportApi = async () => {
   return data;
 };
 
-export const getWeatherApi = async (country) => {
-  const { data } = await axios.get(`${apiWeather}/find`, {
+export const getDeliveriesReportApi = async () => {
+  const { data } = await axios.get(`${apiProject}/release_resume`);
+  return data;
+};
+
+export const getWeatherApi = async ({ latitude, longitude }) => {
+  const { data } = await axios.get(`${apiWeather}/weather`, {
     params: {
-      q: "Bogota",
+      lat: latitude,
+      lon: longitude,
       appid: process.env.REACT_APP_WEATHER_API_KEY,
     },
   });
