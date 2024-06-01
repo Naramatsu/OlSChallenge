@@ -29,9 +29,6 @@ const options = {
   animation: true,
   scales: {
     y: {
-      grid: {
-        display: false,
-      },
       ticks: {
         min: 0,
         max: 100,
@@ -52,7 +49,7 @@ const options = {
 };
 
 const LineCharts = ({ chartInfo }) => {
-  const scores = chartInfo.map((info) => info.value);
+  const values = chartInfo.map((info) => info.value);
   const labels = chartInfo.map((info) => info.time);
 
   const data = useMemo(() => {
@@ -60,14 +57,14 @@ const LineCharts = ({ chartInfo }) => {
       datasets: [
         {
           label: "",
-          data: scores,
+          data: values,
           tension: 0.4,
           borderColor: "#4f46e5",
         },
       ],
       labels,
     };
-  }, [scores, labels]);
+  }, [values, labels]);
 
   return <Line data={data} options={options} />;
 };
