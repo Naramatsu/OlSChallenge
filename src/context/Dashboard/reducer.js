@@ -1,11 +1,17 @@
 import { ERROR, LOADED, LOADING } from "../../utils/constants";
 import {
+  COMMITS_REPORT,
+  COMMITS_REPORT_ERROR,
+  COMMITS_REPORT_LOADING,
   CPU_REPORT,
   CPU_REPORT_ERROR,
   CPU_REPORT_LOADING,
   DASHBOARD,
   DASHBOARD_ERROR,
   DASHBOARD_LOADING,
+  DELIVERIES_REPORT,
+  DELIVERIES_REPORT_ERROR,
+  DELIVERIES_REPORT_LOADING,
   WEATHER,
   WEATHER_ERROR,
   WEATHER_LOADING,
@@ -67,6 +73,42 @@ const reducer = (state, action) => {
         ...state,
         cpuReportStatus: ERROR,
         cpuReportErrorMessage: payload,
+      };
+
+    case COMMITS_REPORT:
+      return {
+        ...state,
+        commitsReport: payload,
+        commitsReportStatus: LOADED,
+      };
+    case COMMITS_REPORT_LOADING:
+      return {
+        ...state,
+        commitsReportStatus: LOADING,
+      };
+    case COMMITS_REPORT_ERROR:
+      return {
+        ...state,
+        commitsReportStatus: ERROR,
+        commitsReportErrorMessage: payload,
+      };
+
+    case DELIVERIES_REPORT:
+      return {
+        ...state,
+        deliveriesReport: payload,
+        deliveriesReportStatus: LOADED,
+      };
+    case DELIVERIES_REPORT_LOADING:
+      return {
+        ...state,
+        deliveriesReportStatus: LOADING,
+      };
+    case DELIVERIES_REPORT_ERROR:
+      return {
+        ...state,
+        deliveriesReportStatus: ERROR,
+        deliveriesReportErrorMessage: payload,
       };
 
     default:
